@@ -1,34 +1,36 @@
+# 🤖 Research Assistant Chatbot System
 
-# FAPS Wiki LLM 🧠🚀
+The **Research Assistant Chatbot System** is an intelligent platform that combines the power of **Large Language Models (LLMs)** with **PDF-based academic knowledge retrieval**. It enables users to upload research papers, query them conversationally, and extract meaningful insights efficiently.
 
-Welcome to **FAPS Wiki LLM**! This project combines the power of Large Language Models with a comprehensive wiki-based knowledge base and pdf articles, enabling efficient knowledge extraction and reasoning.
+This system is designed for **researchers, students, and professionals** who want faster access to knowledge across large collections of academic documents.
 
-The project is currently live on the FAPS server at http://192.168.209.140:5005/chatbot/
+---
 
-The project setting and data can be found on the remote server machine in folder: `C:\Users\localuser\Documents\ai-faps-anh-vo`
+## ✨ Key Features
 
-## Troubleshooting
+- 📄 **PDF Storage & Processing**  
+  Upload, store, and index academic PDFs for efficient retrieval.
 
-If the chatbot is unresponsive, follow these steps:
+- 🔍 **Document-Based Question Answering**  
+  Ask natural language questions and receive accurate answers grounded in the uploaded PDFs.
 
-1. **Verify the Server Status**  
-   Ensure that the remote server machine is powered on. It may occasionally restart due to routine system updates.
+- 📚 **Multi-Document Reasoning**  
+  Compare findings, summaries, and conclusions across multiple research papers.
 
-2. **Restart Docker Service**  
-   If the server is on, try restarting the Docker service `ai-faps-anh-vo`.
+- 🌐 **Google Scholar Search Integration**  
+  Search scholarly articles directly and discover relevant research papers.
 
-3. **Reboot the Server**  
-   If the issue persists, restart the remote server. After rebooting, make sure the following services are running (start them manually if needed):
-   - Start the **XAMPP Apache server** and **MySQL database**.
-   - Open the command line, navigate to `C:\fuseki`, and run `fuseki-server`.
-   - Start the `ai-faps-anh-vo` Docker container.
+- 🧠 **LLM-Powered Understanding**  
+  Uses Large Language Models to provide contextual, concise, and explainable responses.
 
-4. **Contact Support**  
-   If none of the above steps resolve the issue, please contact: [anh.vo@fau.de](mailto:anh.vo@fau.de)
+- 🖥️ **Modern Web Interface**  
+  Interactive frontend for seamless user experience.
 
-## Project Structure
+---
+
+## 🗂️ Project Structure
+
 ```
-├── api_base_image           # Base docker image for the Chatbot Backend
 ├── app                      # Chatbot Backend source code
 ├── data                     # Data required to run the chatbots
 ├── frontend                 # Chatbot Frontend source code
@@ -42,79 +44,101 @@ If the chatbot is unresponsive, follow these steps:
 ├── pdf_main.py              # Python code to start the PDF Services
 ├── requirements.txt         # Project requirements
 ```
-  
-## PDF DATA 
-**[24-01-2025]**  *PDF Embeddings Download Link:* [https://faubox.rrze.uni-erlangen.de/getlink/fiRYMmgLqWCiqob5YH95jh/chroma_db](https://faubox.rrze.uni-erlangen.de/getlink/fiRYMmgLqWCiqob5YH95jh/chroma_db)
+
+
+---
 
 ## 🚀 Quick Start
 
-Get started in just a few steps!
+Follow these steps to run the project locally.
 
-### 1. Clone the Repository
+---
 
-  
+### 1️⃣ Clone the Repository
 
 ```bash
-
-git  clone  https://github.com/andi677/faps-wiki-llm.git
-
-cd  faps-wiki-llm
-
+git clone https://github.com/sahil-sharma-50/Research-Assistant-Chatbot-System.git
+cd Research-Assistant-Chatbot-System
 ```
 
-### 2.  Prerequisites
+### 2️⃣ Prerequisites
 
-```
-Python ~= 3.8.11
-Node ~= 22.2.0
-Docker ~= 27.4.0
-Langfuse ~= 2.93.0
-```
+#### 1. Python Dependencies
 
-To setup Langfuse, please visit the official documentation: [Langfuse Docs]({https://langfuse.com/docs})
+Install the required Python packages:
 
-or
-
-Modify the `docker-compose.yml` to include only `postgres` and `langfuse` services. Then, run `docker compose up`.
-  
-### 3. Run the Application
-**Note**: Provide the necessary environment variables in a .env file before start.
-
-#### 3.1 Initialize Langfuse
-Initialize Langfuse with the required prompts, by running the following command:
-
-```
-python scripts/langfuse/init_prompts.py
-```
-
-
-#### 3.2 Run the Chatbot Backend
 ```bash
-pip  install  -r  requirements.txt
-
-python  main.py
+pip install -r requirements.txt
 ```
 
-#### 3.3 Run the PDF Service
+#### 2. Poppler (Required for PDF Processing on Windows)
+
+Download Poppler for Windows and note its installation path:
+
+👉 [Poppler Windows Releases](https://github.com/oschwartz10612/poppler-windows/releases/)
+
+Make sure the Poppler bin directory is added to your system PATH.
+
+### 3️⃣ Environment Variables
+
+Create a `.env` file in the root directory and provide the required environment variables (e.g., API keys, model settings).
+
+#### Example:
+
+```env
+OPENAI_API_KEY=your_api_key_here
+```
+
+### 4️⃣ Run the Application
+
+#### 4.1 Run the Chatbot Backend
+
 ```bash
-python  pdf_main.py
+python main.py
 ```
 
-#### 3.4. Run the Chatbot Frontend
+#### 4.2 Run the PDF Services
 
-Navigate to the frontend directory and launch the app:
 ```bash
-
-cd  frontend
-
-npm  install  react-scripts
-
-npm  install  react-markdown
-
-npm  install  react-datepicker
-
-set  PORT=3001 && npm  start
-
+python pdf_main.py
 ```
 
-## _Thank you_
+#### 4.3 Run the Frontend
+
+Navigate to the frontend directory and start the React app:
+
+```bash
+cd frontend
+npm install react-scripts
+npm start
+```
+
+The frontend will be available at:
+
+```
+http://localhost:3000
+```
+
+### 🐳 Run with Docker (Optional)
+
+If Docker is installed, you can start the entire system using:
+
+```bash
+docker-compose up --build
+```
+
+## 🛠️ Tech Stack
+
+- **Backend:** Python, FastAPI
+- **Frontend:** React.js
+- **LLM:** OpenAI / LLM APIs
+- **PDF Processing:** Poppler, OCR tools
+- **Search:** Semantic search & Google Scholar integration
+- **Deployment:** Docker, Nginx
+
+## 📬 Contact
+
+If you encounter any issues or have questions, feel free to reach out:
+
+**Sahil Sharma**
+📧 **Email:** mr.sahilsharma50@gmail.com
