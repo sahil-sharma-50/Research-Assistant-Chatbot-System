@@ -28,6 +28,20 @@ This system is designed for **researchers, students, and professionals** who wan
 
 ---
 
+## 📸 Screenshots
+
+### 1. Main Interface
+<img src="images/main_interface.png" alt="Main Interface">
+
+*The primary chatbot interface where users can ask questions about uploaded PDFs*
+
+### 2. PDF List View
+<img src="images/pdf_list.png" alt="PDF List" width="300">
+
+*PDF management interface displaying uploaded research papers*
+
+---
+
 ## 🗂️ Project Structure
 
 ```
